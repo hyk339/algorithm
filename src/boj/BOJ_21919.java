@@ -1,3 +1,4 @@
+package boj;
 import java.io.*;
 import java.util.*;
 
@@ -11,8 +12,8 @@ public class Main {
 		String str = br.readLine();
 		st = new StringTokenizer(str);
 		
-		//lcm ìµœì†Œê³µë°°ìˆ˜
-		//gcf ìµœëŒ€ê³µì•½ìˆ˜
+		//lcm ìµœì†Œê³µë°°?ˆ˜
+		//gcf ìµœë?ê³µì•½?ˆ˜
 		
 		for(int i=0; i<N; i++) {
 			long num = Integer.parseInt(st.nextToken());
@@ -38,7 +39,7 @@ public class Main {
 	}
 	
 	
-	//ìµœëŒ€ ê³µì•½ìˆ˜ êµ¬í•˜ëŠ” "ìœ í´ë¦¬ë“œ í˜¸ìž¬ë²• í™œìš©"
+	//ìµœë? ê³µì•½?ˆ˜ êµ¬í•˜?Š” "?œ ?´ë¦¬ë“œ ?˜¸?ž¬ë²? ?™œ?š©"
 	public static long lcm(long a, long b) {
 		 while(a%b != 0) {
 			long temp = a%b;
@@ -49,7 +50,7 @@ public class Main {
 	}
 	
 
-	//ìµœì†Œ ê³µë°°ìˆ˜ë¥¼ êµ¬í• ë•ŒëŠ” ë‘ìˆ˜ì˜ ê³±ì—ì„œ ìµœëŒ€ê³µì•½ìˆ˜ë¥¼ ë‚˜ëˆ„ëŠ” ë°©ë²•ì„ í™œìš©
+	//ìµœì†Œ ê³µë°°?ˆ˜ë¥? êµ¬í• ?•Œ?Š” ?‘?ˆ˜?˜ ê³±ì—?„œ ìµœë?ê³µì•½?ˆ˜ë¥? ?‚˜?ˆ„?Š” ë°©ë²•?„ ?™œ?š©
 	public static long gcf(long a, long b) {
 		return a*b / lcm(a,b);
 	}

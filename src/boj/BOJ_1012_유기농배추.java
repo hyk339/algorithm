@@ -1,12 +1,12 @@
-package dfsì™€bfs;
+package boj??bfs;
 
 import java.io.*;
 import java.util.*;
 
 
-public class BOJ_1012_ìœ ê¸°ë†ë°°ì¶” {
+public class BOJ_1012_?œ ê¸°ë†ë°°ì¶” {
 	
-	//ì…ë ¥ì„ ìœ„í•œ ë¶€ë¶„
+	//?…? ¥?„ ?œ„?•œ ë¶?ë¶?
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	static StringBuilder sb = new StringBuilder();
@@ -15,8 +15,8 @@ public class BOJ_1012_ìœ ê¸°ë†ë°°ì¶” {
 	static int[] dy = {0,1,0,-1};
 	static int tx, ty;
 	static int[][] arr;
-	static boolean[][] visitCheck; //í™•ì¸ì—¬ë¶€ ì²´í¬
-	static int count; //ë²Œë ˆë¥¼ ëª‡ë§ˆë¦¬ í’€ì–´ì•¼í•˜ëŠ”ì§€ count
+	static boolean[][] visitCheck; //?™•?¸?—¬ë¶? ì²´í¬
+	static int count; //ë²Œë ˆë¥? ëª‡ë§ˆë¦? ???–´?•¼?•˜?Š”ì§? count
 
 	
 	public static void main(String[] args) throws IOException {
@@ -26,14 +26,14 @@ public class BOJ_1012_ìœ ê¸°ë†ë°°ì¶” {
 		for(int i=0; i<testCaseNum; i++) {
 			count = 0;
 			st = new StringTokenizer(br.readLine()," ");
-			tx = Integer.parseInt(st.nextToken()); //ë°°ì¶”ë°­ ê°€ë¡œê¸¸ì´
-			ty = Integer.parseInt(st.nextToken()); //ë°°ì¶”ë°­ ìƒˆë¡œê¸¸ì´
-			int n = Integer.parseInt(st.nextToken()); //ì‹¬ì–´ì§„ ë°°ì¶” ì´ ê°œìˆ˜
+			tx = Integer.parseInt(st.nextToken()); //ë°°ì¶”ë°? ê°?ë¡œê¸¸?´
+			ty = Integer.parseInt(st.nextToken()); //ë°°ì¶”ë°? ?ƒˆë¡œê¸¸?´
+			int n = Integer.parseInt(st.nextToken()); //?‹¬?–´ì§? ë°°ì¶” ì´? ê°œìˆ˜
 			
 			visitCheck = new boolean[ty][tx];
 			detailLoc(tx,ty,n);
 			
-			for(int y=0; y<ty; y++) { //(0,0)ë¶€í„° (x,y)ê¹Œì§€ ëª¨ë‘ ê²€ì‚¬
+			for(int y=0; y<ty; y++) { //(0,0)ë¶??„° (x,y)ê¹Œì? ëª¨ë‘ ê²??‚¬
 				for(int x=0; x<tx; x++) {
 					if(arr[y][x] == 1 && !visitCheck[y][x]) {
 						dfs(y,x);

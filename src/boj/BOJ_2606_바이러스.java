@@ -1,21 +1,21 @@
-package dfsì™€bfs;
+package boj??bfs;
 
 import java.io.*;
 import java.util.*;
 
-public class BOJ_2606_ë°”ì´ëŸ¬ìŠ¤ {
+public class BOJ_2606_ë°”ì´?Ÿ¬?Š¤ {
 	
-	static Integer count = 0; //ë°”ì´ëŸ¬ìŠ¤ì— ê±¸ë¦° ì»´í“¨í„° ê°œìˆ˜ ì¹´ìš´íŠ¸
-	static ArrayList<Integer>[] arr; //ì—°ê²°ëœ ì»´í“¨í„°ì˜ ë°°ì—´ì„ ë‹´ì„ ë³€ìˆ˜
-	static boolean[] visitCheck; //í•´ë‹¹ ì»´í“¨í„° ì²´í¬í–ˆëŠ”ì§€ í™•ì¸
+	static Integer count = 0; //ë°”ì´?Ÿ¬?Š¤?— ê±¸ë¦° ì»´í“¨?„° ê°œìˆ˜ ì¹´ìš´?Š¸
+	static ArrayList<Integer>[] arr; //?—°ê²°ëœ ì»´í“¨?„°?˜ ë°°ì—´?„ ?‹´?„ ë³??ˆ˜
+	static boolean[] visitCheck; //?•´?‹¹ ì»´í“¨?„° ì²´í¬?–ˆ?Š”ì§? ?™•?¸
 	
 	public static void main(String[] args) throws IOException {
-		//ì…,ì¶œë ¥ í™•ì¸ì„ ìœ„í•œ ë¶€ë¶„
+		//?…,ì¶œë ¥ ?™•?¸?„ ?œ„?•œ ë¶?ë¶?
 		StringTokenizer st;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		Integer totalComNum; //ì´ ì»´í“¨í„° ê°œìˆ˜
-		Integer connectionCount; //ì—°ê²°ëœ ì»´í“¨í„° ê°œìˆ˜
+		Integer totalComNum; //ì´? ì»´í“¨?„° ê°œìˆ˜
+		Integer connectionCount; //?—°ê²°ëœ ì»´í“¨?„° ê°œìˆ˜
 		
 		
 		totalComNum = Integer.parseInt(br.readLine());
@@ -23,7 +23,7 @@ public class BOJ_2606_ë°”ì´ëŸ¬ìŠ¤ {
 		connectionCount = Integer.parseInt(br.readLine());
 		arr = new ArrayList[totalComNum+1];
 		
-		for(int i=0; i<connectionCount; i++) { //HashMapì— ì—°ê²°ëœ ì»´í“¨í„°ì— ëŒ€í•œ ì •ë³´ë¥¼ ë„£ê¸° ìœ„í•œ ë¶€ë¶„
+		for(int i=0; i<connectionCount; i++) { //HashMap?— ?—°ê²°ëœ ì»´í“¨?„°?— ???•œ ? •ë³´ë?? ?„£ê¸? ?œ„?•œ ë¶?ë¶?
 			String twoComStr = br.readLine();
 			st = new StringTokenizer(twoComStr);
 			Integer firstCom = Integer.parseInt(st.nextToken());
@@ -45,7 +45,7 @@ public class BOJ_2606_ë°”ì´ëŸ¬ìŠ¤ {
 		}
 		
 		
-		//1ë²ˆ ì»´í“¨í„°ê°€ ì›œë°”ì´ëŸ¬ìŠ¤ì— ê±¸ë ¸ì„ ë•Œ
+		//1ë²? ì»´í“¨?„°ê°? ?›œë°”ì´?Ÿ¬?Š¤?— ê±¸ë ¸?„ ?•Œ
 		visitCheck[1] = true;
 		dfs(1);
 		System.out.println(count);
@@ -54,7 +54,7 @@ public class BOJ_2606_ë°”ì´ëŸ¬ìŠ¤ {
 	public static void dfs(int comNum){
 		for(int i=0; i<arr[comNum].size(); i++) {
 			int selectedNum = arr[comNum].get(i);
-			if(visitCheck[selectedNum]) { //ê²€ì‚¬ê°€ ì´ë¯¸ ëë‚œê²½ìš°
+			if(visitCheck[selectedNum]) { //ê²??‚¬ê°? ?´ë¯? ??‚œê²½ìš°
 				continue;
 			} else {
 				count++;

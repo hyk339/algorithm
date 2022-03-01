@@ -1,15 +1,16 @@
+package boj;
 import java.io.*;
 import java.util.*;
 
 public class Main {
 	static int[] bulbStatus;
-	static int N; //전구의 개수
+	static int N; //?��구의 개수
 	public static void main(String[] args) throws Exception {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = null;
 		StringBuilder sb = new StringBuilder();
-		int M; //명령어의 개수
+		int M; //명령?��?�� 개수
 		
 		
 		String firstrow = br.readLine();
@@ -28,7 +29,7 @@ public class Main {
 		for(int i=1; i<=M; i++) {
 			String str = br.readLine();
 			st = new StringTokenizer(str);
-			int a = Integer.parseInt(st.nextToken()); //a번째 명령어
+			int a = Integer.parseInt(st.nextToken()); //a번째 명령?��
 			int b = Integer.parseInt(st.nextToken());
 			int c = Integer.parseInt(st.nextToken());
 			fun(a,b,c);
