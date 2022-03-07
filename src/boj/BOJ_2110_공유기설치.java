@@ -19,29 +19,27 @@ public class BOJ_2110_공유기설치 {
 		
 		Arrays.sort(arr); //정렬
 		
-		int left = 1; //부조건 최단거리는 1이다.
-		int right = arr[N-1];
+		int low = 1; //부조건 최단거리는 1이다.
+		int high = arr[N-1] - arr[0] + 1;
 		
-		System.out.println("left : "+left);
-		System.out.println("right : "+right);
 		
-		int count = 1;
-		int mid = 0;
-		while(left < right) {
-			mid = (right+left)/2;
-			int nowLoc = left;
+		
+		while(low < high) {
+			int count = 1;
+			int lastLocate = arr[0];
+			int mid = (high+low)/2;
 			for(int i=1; i<N; i++) { //첫번째는 무조건 설치해서 1부터 시작
-				if(nowLoc+mid<=arr[i]) {
-					nowLoc = arr[i];
+				if(arr[i]-lastLocate>=mid) {
+					lastLocate = arr[i];
 					count++;
 				}
 			}
-			if(count >= C) {
-				left = mid+1;
-			}else if(count < C) {
-				right = mid-1;
+			if(count < C) {
+				high = mid;
+			}else if(count >= C) {
+				low = mid+1;
 			}
 		}
-		System.out.println(mid);
+		System.out.println(low-1);
 	}
 }
