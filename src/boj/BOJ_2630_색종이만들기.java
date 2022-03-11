@@ -32,6 +32,7 @@ public class BOJ_2630_색종이만들기 {
 				if(y==0 && x==0) {first = arr[y][x];}
 				if(first != arr[y][x]) {
 					func(m/2);
+					
 				}
 			}
 		}
