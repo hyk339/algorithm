@@ -31,8 +31,9 @@ public class BOJ_2630_색종이만들기 {
 			for(int x=0; x<m; x++) {
 				if(y==0 && x==0) {first = arr[y][x];}
 				if(first != arr[y][x]) {
-					func(m/2);
+					//func(m/2);
 					
+				
 				}
 			}
 		}
