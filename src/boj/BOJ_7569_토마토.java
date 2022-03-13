@@ -25,9 +25,9 @@ public class BOJ_7569_토마토 {
 	public static void main(String[] args) throws IOException {
 		String temp = br.readLine();
 		st = new StringTokenizer(temp);
-		int M = Integer.parseInt(st.nextToken());
-		int N = Integer.parseInt(st.nextToken());
-		int H = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		N = Integer.parseInt(st.nextToken());
+		H = Integer.parseInt(st.nextToken());
 		
 		arr = new int[H][N][M];
 		check = new boolean[H][N][M];
@@ -68,32 +68,26 @@ public class BOJ_7569_토마토 {
 			int y = temp.y;
 			int x = temp.x;
 			int day = temp.day;
-			check[z][y][x] = true;
 			lastDay = day;
-			
-			System.out.println(N);
-			System.out.println(H);
-			System.out.println(M);
 			
 			for(int i=0; i<6; i++) {
 				if(z+dz[i]>=0 && y+dy[i]>=0 && x+dx[i]>=0
 					&& z+dz[i]<H && y+dy[i]<N && x+dx[i]<M
-					//&& !check[z+dz[i]][y+dy[i]][x+dx[i]]
-					//&& arr[z+dz[i]][y+dy[i]][x+dx[i]] == 0
+					&& !check[z+dz[i]][y+dy[i]][x+dx[i]]
+					&& arr[z+dz[i]][y+dy[i]][x+dx[i]] == 0
 					) {
 						q.offer(new Loc(z+dz[i],y+dy[i],x+dx[i], day+1));
+						check[z+dz[i]][y+dy[i]][x+dx[i]] = true;
 						rawTomatoCount++;
-						System.out.println("----");
-						
 					}
 			}
-			if(rawTomatoCount != totalCount) {
-				System.out.println(totalCount);
-				System.out.println(rawTomatoCount);
-				return -1;
-			}
+
 		}
 		
+		if(rawTomatoCount != totalCount) {
+
+			return -1;
+		}
 		return lastDay;
 		
 	}
