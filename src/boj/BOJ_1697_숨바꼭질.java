@@ -9,33 +9,45 @@ public class BOJ_1697_¼û¹Ù²ÀÁú {
 	
 	static int N;
 	static int K;
-	static int minSecond = Integer.MAX_VALUE;
-	
+	static int[] timeArr = new int[100001];
 	public static void main(String[] args) throws IOException{
 		String[] arr = br.readLine().split(" ");
-		int N = Integer.parseInt(arr[0]);
-		int K = Integer.parseInt(arr[1]);
+		N = Integer.parseInt(arr[0]);
+		K = Integer.parseInt(arr[1]);
 		
-		dfs(N,0);
-		System.out.println(minSecond);
+		int result = bfs(N);
+		System.out.println(result);
 	}
 	
-	public static void dfs(int loc, int second) {
-		if(loc == K) {
-			if(second < minSecond) minSecond = second;
-			return;
-		}
+	public static int bfs(int loc) {
 		
-		if(loc-1>=0 && loc-1 <= 100000 && Math.abs(K-loc)>Math.abs(K-loc-1)) {
-			dfs(loc-1, second+1);
-		}
+		Queue<Integer> q = new LinkedList<Integer>();
+		q.offer(loc);
 		
-		if(loc+1>=0 && loc+1 <= 100000 && Math.abs(K-loc)>Math.abs(K-loc+1)) {
-			dfs(loc+1, second+1);
+		while(!q.isEmpty()) {
+			int temp = q.poll();
+			
+			if(temp == K) {
+				return timeArr[temp];
+			}
+
+			
+			if(timeArr[temp-1] == 0 && temp-1 != N && temp-1>=0) {
+				
+				timeArr[temp-1] = timeArr[temp]+1;
+				q.offer(temp-1);
+			}
+			if(timeArr[temp+1] == 0 && temp+1 != N && temp+1 <= 100000) {
+			
+				timeArr[temp+1] = timeArr[temp]+1;
+				q.offer(temp+1);
+			}
+			if(timeArr[temp*2] == 0 && temp*2 != N && temp*2 <= 100000) {
+				
+				timeArr[temp*2] = timeArr[temp]+1;
+				q.offer(temp*2);
+			}
 		}
-		
-		if(loc*2>=0 && loc*2 <= 100000 && Math.abs(K-loc)>Math.abs(K-(loc*2))) {
-			dfs(loc*2, second+1);
-		}
+		return -1;
 	}
 }
