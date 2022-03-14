@@ -9,7 +9,7 @@ public class BOJ_1697_숨바꼭질 {
 	
 	static int N;
 	static int K;
-	static int[] timeArr = new int[100001];
+	static int[] visited = new int[100001];
 	public static void main(String[] args) throws IOException{
 		String[] arr = br.readLine().split(" ");
 		N = Integer.parseInt(arr[0]);
@@ -28,23 +28,23 @@ public class BOJ_1697_숨바꼭질 {
 			int temp = q.poll();
 			
 			if(temp == K) {
-				return timeArr[temp];
+				return visited[temp];
 			}
 
 			
-			if(timeArr[temp-1] == 0 && temp-1 != N && temp-1>=0) {
+			if(temp-1>=0 && visited[temp-1] == 0 && temp-1 != N) { // visited[-1]은 outofbound이다.
 				
-				timeArr[temp-1] = timeArr[temp]+1;
+				visited[temp-1] = visited[temp]+1;
 				q.offer(temp-1);
 			}
-			if(timeArr[temp+1] == 0 && temp+1 != N && temp+1 <= 100000) {
+			if(temp+1 <= 100000 && visited[temp+1] == 0 && temp+1 != N) {
 			
-				timeArr[temp+1] = timeArr[temp]+1;
+				visited[temp+1] = visited[temp]+1;
 				q.offer(temp+1);
 			}
-			if(timeArr[temp*2] == 0 && temp*2 != N && temp*2 <= 100000) {
+			if(temp*2 <= 100000 && visited[temp*2] == 0 && temp*2 != N) {
 				
-				timeArr[temp*2] = timeArr[temp]+1;
+				visited[temp*2] = visited[temp]+1;
 				q.offer(temp*2);
 			}
 		}
