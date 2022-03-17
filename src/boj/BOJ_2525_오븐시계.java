@@ -8,12 +8,13 @@ public class BOJ_2525_¿Àºì½Ã°è {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringBuilder sb = new StringBuilder();
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException { //¿Àºì½Ã°è
 		String tempStr = br.readLine();
 		String[] arr = tempStr.split(" ");
 		int A = Integer.parseInt(arr[0]);
 		int B = Integer.parseInt(arr[1]);
 		int C = Integer.parseInt(br.readLine());
+		
 		
 		int hour = 0;
 		int minute = 0;
