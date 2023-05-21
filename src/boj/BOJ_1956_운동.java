@@ -34,6 +34,9 @@ public class BOJ_1956_운동 {
 			dfs(i,0,i);
 		}
 		
+		if(minDistance == Integer.MAX_VALUE) {
+			minDistance = -1;
+		}
 		System.out.println(minDistance);
 	}
 	
