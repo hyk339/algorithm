@@ -8,6 +8,7 @@ public class BOJ_1753_최단경로_재 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	static PriorityQueue<Edge1753재> pq = new PriorityQueue<Edge1753재>();
+	static StringBuilder sb = new StringBuilder();
 	
 	static int V; //정점의 개수
 	static int E; //간선의 개수
@@ -25,9 +26,10 @@ public class BOJ_1753_최단경로_재 {
 		dist = new int[V+1];
 		//V개수만큼 ArrayList를 만든다.
 		
+		Arrays.fill(dist, INF);
+		
 		for(int i=0; i<=V; i++) { 
 			arr.add(new ArrayList<Edge1753재>());
-			dist[i] = INF;
 		}
 		
 		st = new StringTokenizer(br.readLine());
@@ -44,23 +46,32 @@ public class BOJ_1753_최단경로_재 {
 		}
 		
 		func(K);
+		
+		for(int i=1; i<V+1; i++) {
+			if(dist[i] == INF) {
+				sb.append("INF").append("\n");
+			} else {
+				sb.append(dist[i]).append("\n");
+			}
+			
+		}
+		System.out.println(sb);
 	}
 	
 	static void func(int start){
 		
 		pq.offer(new Edge1753재(start,0));
-		
+		dist[start] = 0;
 		while(!pq.isEmpty()) {
 			
-			Edge1753재 currNode = pq.poll();
-			int curr = currNode.to;
+			Edge1753재 curr = pq.poll();
 			
-			if(currNode.weight > dist[curr]) continue;
-			
-			for(int j = 0; j<arr.get(curr).size(); j++) {
-				
-				if(dist[arr.get(curr).get(j).to] > dist[curr] + arr.get(curr).get(j).weight) {
-					dist[arr.get(curr).get(j).to] = dist[curr] + arr.get(curr).get(j).weight;
+			for(int i=0; i<arr.get(curr.to).size(); i++) {
+				int nextTo = arr.get(curr.to).get(i).to;
+				int nextWeight = arr.get(curr.to).get(i).weight;
+				if(dist[nextTo] > curr.weight+nextWeight) {
+					dist[nextTo] = curr.weight+nextWeight;
+					pq.offer(new Edge1753재(nextTo, dist[nextTo]));
 				}
 			}
 		}
