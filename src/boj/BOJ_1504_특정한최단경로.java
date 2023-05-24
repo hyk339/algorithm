@@ -45,7 +45,6 @@ public class BOJ_1504_특정한최단경로 {
 		int result1 = func(1,point1);
 		int result2 = func(point1,point2);
 		int result3 = func(point2,N);
-		
 		int finalResult = -1;
 		if(result1 != INF && result2 != INF && result3 != INF) {
 			finalResult = result1+result2+result3;
@@ -54,7 +53,6 @@ public class BOJ_1504_특정한최단경로 {
 		int result4 = func(1,point2);
 		int result5 = func(point2,point1);
 		int result6 = func(point1,N);
-		
 		if(result4 != INF && result5 != INF && result6 != INF) {
 			if(finalResult == -1) {
 				finalResult = result4+result5+result6;
@@ -94,9 +92,7 @@ public class BOJ_1504_특정한최단경로 {
 			}
 		}
 		
-		
-		
-		return 0;
+		return dist[end];
 	}
 }
 
