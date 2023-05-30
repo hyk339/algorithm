@@ -10,8 +10,7 @@ public class BOJ_11657_타임머신 {
 	 */
 	static int N; //도시의 개수
 	static int M; //버스 노선의 개수
-	static boolean[] minusVisitCheck; //음수로 갈 수 있는 도시를 다시 방문하는 경우 check 
-	static int[] dist;
+	static long[] dist;
 	static ArrayList<BOJ11657>[] arr;
 	static final int INF = Integer.MAX_VALUE;
 	
@@ -24,10 +23,9 @@ public class BOJ_11657_타임머신 {
 		M = Integer.parseInt(st.nextToken());
 		
 		
-		dist = new int[N+1];
+		dist = new long[N+1];
 		Arrays.fill(dist, INF);
 		//음의 경로로 갈 수 있는 경로를 방문하면 true로 바꾼다.
-		minusVisitCheck = new boolean[N+1]; 
 		arr = new ArrayList[N+1];
 	
 		for(int i=1; i<=N; i++) {
@@ -41,47 +39,46 @@ public class BOJ_11657_타임머신 {
 			int weight = Integer.parseInt(st.nextToken());
 			arr[from].add(new BOJ11657(to,weight));
 		}
-		int result = djkstra(1);
 		
-		if(result == -1) {
-			sb.append("-1");
-		}else {
+		if(bell()) {
 			for(int i=2; i<=N; i++) {
-				if(dist[i] != INF) {
-					sb.append(dist[i]).append("\n");
-				}else{
+				if(dist[i] == INF) {
 					sb.append("-1").append("\n");
+				}else {
+					sb.append(dist[i]).append("\n");
 				}
 			}
+		}else {
+			sb.append("-1");
 		}
 		
 		System.out.println(sb);
 	}
 	
-	static int djkstra(int start) {
-		PriorityQueue<BOJ11657> pq = new PriorityQueue<BOJ11657>();
-		pq.offer(new BOJ11657(start,0));
-		dist[start] = 0;
-		
-		while(!pq.isEmpty()) {
-			BOJ11657 curr = pq.poll();
-			int now = curr.to;
-			int accumWeight = curr.weight;
-			
-			for(BOJ11657 node : arr[now]) {
-				if(dist[node.to] > node.weight + accumWeight) {
-					if(!minusVisitCheck[node.to] && node.weight<0) {
-						minusVisitCheck[node.to] = true;
-					}else if(minusVisitCheck[node.to] && node.weight<0) {
-						//음의 경로를 2번 타는 경우
-						return -1;
-					}
-					dist[node.to] = node.weight + accumWeight;
-					pq.offer(new BOJ11657(node.to,dist[node.to]));
+	static boolean bell() {
+		dist[1] = 0;
+	
+		for(int i=1; i<=N-1; i++) { //N-1회만 돈다
+			if(dist[i] == INF) break;
+			for(int j=0; j<arr[i].size(); j++) {
+				BOJ11657 curr = arr[i].get(j);
+				if(dist[curr.to] > dist[i]+curr.weight) {
+					dist[curr.to] = dist[i]+curr.weight;
 				}
 			}
 		}
-		return 0;
+		
+		for(int i=1; i<=N; i++) { 
+			if(dist[i] == INF) break;
+			for(int j=0; j<arr[i].size(); j++) {
+				BOJ11657 curr = arr[i].get(j);
+				if(dist[curr.to] > dist[i]+curr.weight) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 }
 
