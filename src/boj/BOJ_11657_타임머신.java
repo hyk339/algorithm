@@ -43,7 +43,7 @@ public class BOJ_11657_타임머신 {
 		if(bell()) {
 			for(int i=2; i<=N; i++) {
 				if(dist[i] == INF) {
-					sb.append("-1").append("\n");
+					sb.append(-1).append("\n");
 				}else {
 					sb.append(dist[i]).append("\n");
 				}
@@ -58,21 +58,25 @@ public class BOJ_11657_타임머신 {
 	static boolean bell() {
 		dist[1] = 0;
 	
-		for(int i=1; i<=N-1; i++) { //N-1회만 돈다
-			if(dist[i] == INF) break;
-			for(int j=0; j<arr[i].size(); j++) {
-				BOJ11657 curr = arr[i].get(j);
-				if(dist[curr.to] > dist[i]+curr.weight) {
-					dist[curr.to] = dist[i]+curr.weight;
+		for(int i=1; i<N; i++) { //N-1회만 돈다
+			for(int j=1; j<=N; j++) {
+				//if(dist[j] == INF) break;
+				for(int k=0; k<arr[j].size(); k++) {
+					if(dist[j] == INF) break;
+					BOJ11657 curr = arr[j].get(k);
+					
+					if(dist[curr.to] > dist[j]+curr.weight) {
+						dist[curr.to] = dist[j]+curr.weight;
+					}
 				}
 			}
 		}
 		
-		for(int i=1; i<=N; i++) { 
-			if(dist[i] == INF) break;
-			for(int j=0; j<arr[i].size(); j++) {
-				BOJ11657 curr = arr[i].get(j);
-				if(dist[curr.to] > dist[i]+curr.weight) {
+		for(int j=1; j<=N; j++) { 
+			for(int k=0; k<arr[j].size(); k++) {
+				if(dist[j] == INF) break;
+				BOJ11657 curr = arr[j].get(k);
+				if(dist[curr.to] > dist[j]+curr.weight) {
 					return false;
 				}
 			}
