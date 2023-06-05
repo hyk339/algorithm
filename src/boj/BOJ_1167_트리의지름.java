@@ -9,7 +9,7 @@ public class BOJ_1167_트리의지름 {
 	static ArrayList<BOJ_1167>[] arr;
 	static boolean[] visitedCheck; 
 	static int result = 0;
-	
+	static int lastNode;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		V = Integer.parseInt(br.readLine());	
@@ -32,11 +32,14 @@ public class BOJ_1167_트리의지름 {
 			}
 		}
 		
-		for(int i=1; i<=V; i++) {
-			visitedCheck = new boolean[V+1];
-			visitedCheck[i] = true;
-			dfs(i,0);
-		}
+
+		visitedCheck = new boolean[V+1];
+		visitedCheck[1] = true;
+		dfs(1,0);
+		
+		visitedCheck = new boolean[V+1];
+		visitedCheck[lastNode] = true;
+		dfs(lastNode,0);
 		
 		System.out.println(result);
 	}
@@ -45,6 +48,7 @@ public class BOJ_1167_트리의지름 {
 		
 		if(totalDistance > result) {
 			result = totalDistance;
+			lastNode = start;
 		}
 		
 		for(BOJ_1167 curr : arr[start]) {
