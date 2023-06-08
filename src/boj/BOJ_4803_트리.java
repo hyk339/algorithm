@@ -53,7 +53,7 @@ public class BOJ_4803_트리 {
 			}else if(count == 1) {
 				sb.append("Case "+caseCount+": ").append("There is one tree.\n");
 			}else {
-				sb.append("Case "+caseCount+": ").append("A forest of T trees.\n");
+				sb.append("Case "+caseCount+": ").append("A forest of "+count+" trees.\n");
 			}
 		}
 		System.out.println(sb);
@@ -62,9 +62,6 @@ public class BOJ_4803_트리 {
 	public static void dfs(int from, int to) {
 		visitCheck[to] = true;
 		
-		if(from != 0) { //최소 하나와 연결되었는지 확인
-			flag2 = true;
-		}
 		
 		for(Integer next : arr[to]) {
 			if(next == from) {
@@ -77,6 +74,6 @@ public class BOJ_4803_트리 {
 			}
 		}
 		
-		if(flag && from == 0 && flag2) count++;
+		if(flag && from == 0) count++;
 	}
 }
