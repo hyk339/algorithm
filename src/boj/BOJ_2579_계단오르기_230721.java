@@ -18,7 +18,13 @@ public class BOJ_2579_계단오르기_230721 {
 		}
 		dp[0] = arr[0];
 		dp[1] = arr[1];
-		dp[2] = arr[1]+arr[2];
+		
+		/* 2023-07-21
+		 * 계단의 수가 1개일 수도 있으므로 if(n>=2) 조건이 필요하다.
+		 */
+		if(n>=2) {
+			 dp[2] = arr[1]+arr[2];
+		 }
 		int result = fun(n);
 		System.out.println(result);
 	}
