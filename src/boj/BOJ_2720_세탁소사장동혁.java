@@ -13,6 +13,8 @@ public class BOJ_2720_세탁소사장동혁 {
 			if(money/25 > 0 && money>0) {
 				sb.append(money/25).append(" ");
 				money = money%25;
+			}else {
+				sb.append(0).append(" ");
 			}
 			if(money/10 > 0 && money>0) {
 				sb.append(money/10).append(" ");
