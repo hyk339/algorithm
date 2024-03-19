@@ -33,6 +33,7 @@ public class BOJ_2839_설탕배달 {
 		}
 		System.out.println(result3);
 		System.out.println(result);
+		
 	}
 	
 	public static int func1(int n) {
